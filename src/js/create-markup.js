@@ -42,14 +42,4 @@ function updateList(markup, galleryEl) {
   galleryEl.insertAdjacentHTML('beforeend', markup);
 }
 
-// function clearList(galleryEl) {
-//   galleryEl.innerHTML = '';
-// }
-
-// function onError(err) {
-//   console.error(err);
-//   loadMoreBtn.hide();
-//   clearList();
-// }
-
 export { createMarkup, updateList };

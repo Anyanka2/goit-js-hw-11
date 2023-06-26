@@ -2,15 +2,13 @@ import './css/styles.css';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import {
-  createMarkup,
-  updateList,
-  } from './js/create-markup';
+import { createMarkup, updateList } from './js/create-markup';
 import { getImages } from './js/get-images';
 
 const searchForm = document.querySelector('.search-form');
 const galleryEl = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
+const toTopBtn = document.querySelector('.btn-to-top');
 
 let query = '';
 let page = 1;
@@ -19,9 +17,11 @@ let simpleLightBox;
 
 searchForm.addEventListener('submit', onSearchForm);
 loadMoreBtn.addEventListener('click', onLoadMoreBtn);
+window.addEventListener('scroll', debounce(onScroll, 10));
+toTopBtn.addEventListener('click', onToTopBtn);
 
-//onScroll();
-//onToTopBtn();
+onScroll();
+onToTopBtn();
 
 async function onSearchForm(event) {
   event.preventDefault();
@@ -107,6 +107,7 @@ function alertEndOfSearch() {
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 function debounce(callback, delay) {
   let timeoutId;
   return (...args) => {
@@ -117,7 +118,6 @@ function debounce(callback, delay) {
   };
 }
 
-
 function onScroll() {
   const scrolled = window.pageYOffset;
   const comply = document.documentElement.clientHeight;
@@ -126,13 +126,8 @@ function onScroll() {
   toTopBtn.classList.toggle('btn-to-top--visible', isScrolled);
 }
 
-
 function onToTopBtn() {
   if (window.pageYOffset > 0) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
-
-const toTopBtn = document.querySelector('.btn-to-top');
-window.addEventListener('scroll', debounce(onScroll, 10));
-toTopBtn.addEventListener('click', onToTopBtn);
