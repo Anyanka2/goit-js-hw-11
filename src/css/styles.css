@@ -33,6 +33,42 @@ img {
   display: none;
   visibility: hidden;
 }
+input {
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #434455;
+  font-size: 18px;
+}
+input:valid {
+  border-color: rgb(64, 60, 96, 0.3);
+}
+input:focus,
+input:hover {
+  animation: pulse 0.5s ease-in-out;
+}
+button {
+  width: 200px;
+  padding: 10px 16px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  background-color: #434455;
+}
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 25px #434455, 0 0 50px #fff;
+  }
+}
+button:focus,
+button:hover {
+  background-color: #434455;
+  color: #fff;
+  animation: pulse 0.5s ease-in-out;
+}
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -78,6 +114,10 @@ img {
   opacity: 0;
   visibility: hidden;
 }
+.btn-to-top:hover,
+.btn-to-top:focus {
+  animation: pulse 0.5s ease-in-out;
+}
 .btn-to-top--visible {
   opacity: 1;
   visibility: visible;
@@ -87,4 +127,8 @@ img {
   width: 40px;
   height: 40px;
   fill: #434455;
+}
+.load-more-btn {
+  display: flex;
+  justify-content: center;
 }
